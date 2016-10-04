@@ -33,7 +33,7 @@ def generateGrid(nx,ny, DomainTwo = False):
             name += 1
             
     if DomainTwo:
-        boundary = {'leftUpper': pointNames[1:(n*h2l1)+1,0], 'leftLower': pointNames[(n*h2l1)+1:-1,0], 'rightUpper': pointNames[1:(n*h2r1)-1,-1], 'rightLower': pointNames[(n*h2r1)-1:-1,-1], 'upper': pointNames[0,:], 'lower': pointNames[-1,:]}
+        boundary = {'leftUpper': pointNames[1:(n*heigth2l1)+1,0], 'leftLower': pointNames[(n*heigth2l1)+1:-1,0], 'rightUpper': pointNames[1:(n*heigth2r1)-1,-1], 'rightLower': pointNames[(n*heigth2r1)-1:-1,-1], 'upper': pointNames[0,:], 'lower': pointNames[-1,:]}
     else:
         boundary = {'leftUpper': pointNames[1:-1,0], 'leftLower': array([]), 'rightUpper': pointNames[1:-1,-1], 'rightLower': array([]), 'upper': pointNames[0,:], 'lower': pointNames[-1,:]}
     
