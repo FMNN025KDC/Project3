@@ -6,7 +6,7 @@ Created on Mon Oct  3 13:08:13 2016
 from  scipy import *
 from  pylab import *
 
-n = 10 # Nbr of points
+n = 30 # Nbr of points
 Deltax = 1 / (n -1)
 heigth1 = 1
 base1 = 1
@@ -33,7 +33,7 @@ def generateGrid(nx,ny, DomainTwo = False):
             name += 1
             
     if DomainTwo:
-        boundary = {'leftUpper': pointNames[1:(n*h2l1)+1,0], 'leftLower': pointNames[(n*h2l1)+1:-1,0], 'rightUpper': pointNames[1:(n*h2r1)-1,-1], 'rightLower': pointNames[(n*h2r1)-1:-1,-1], 'upper': pointNames[0,:], 'lower': pointNames[-1,:]}
+        boundary = {'leftUpper': pointNames[1:(n*heigth2l1)+1,0], 'leftLower': pointNames[(n*heigth2l1)+1:-1,0], 'rightUpper': pointNames[1:(n*heigth2r1)-1,-1], 'rightLower': pointNames[(n*heigth2r1)-1:-1,-1], 'upper': pointNames[0,:], 'lower': pointNames[-1,:]}
     else:
         boundary = {'leftUpper': pointNames[1:-1,0], 'leftLower': array([]), 'rightUpper': pointNames[1:-1,-1], 'rightLower': array([]), 'upper': pointNames[0,:], 'lower': pointNames[-1,:]}
     
@@ -51,10 +51,10 @@ def generateGrid(nx,ny, DomainTwo = False):
 def domainOne():
     h = heigth1
     b = base1
-    nx = 10
-    ny = 10    
+    nx = n * b
+    ny = n * h   
     
-    conditions = {'leftUpper': ('dirichlet',array([40])), 'leftLower': ('dirichlet',array([40])), 'rightUpper': ('neumann',array([1])), 'rightLower': (None,None), 'upper': ('dirichlet',array([15])), 'lower': ('dirichlet',array([15]))}
+    conditions = {'leftUpper': ('dirichlet',array([40])), 'leftLower': ('dirichlet',array([0])), 'rightUpper': ('neumann',array([1])), 'rightLower': (None,None), 'upper': ('dirichlet',array([15])), 'lower': ('dirichlet',array([15]))}
     edof,boundary = generateGrid(nx,ny)    
     
     return edof,boundary,conditions,nx*ny,b,h
@@ -62,8 +62,8 @@ def domainOne():
 def domainThree():
     h = heigth3
     b = base3
-    nx = 10
-    ny = 10  
+    nx = n * b
+    ny = n * h
 
     conditions = {'leftUpper': ('neumann',array([1])), 'leftLower': (None,None), 'rightUpper': ('dirichlet',array([40])), 'rightLower': ('dirichlet',array([40])), 'upper': ('dirichlet',array([15])), 'lower': ('dirichlet',array([15]))}
     edof,boundary = generateGrid(nx,ny)
@@ -73,8 +73,8 @@ def domainThree():
 def domainTwo():
     h = heigth2
     b = base2
-    nx = 10
-    ny = 19    
+    nx = n * b
+    ny = n * h -1    
     
     conditions = {'leftUpper': ('dirichlet',array([15])), 'leftLower': ('dirichlet',array([15])), 'rightUpper': ('dirichlet',array([15])), 'rightLower': ('dirichlet',array([15])), 'upper': ('dirichlet',array([40])), 'lower': ('dirichlet',array([5]))}
     edof,boundary = generateGrid(nx,ny,True)
