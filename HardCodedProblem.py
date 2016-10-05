@@ -6,7 +6,7 @@ Created on Mon Oct  3 13:08:13 2016
 from  scipy import *
 from  pylab import *
 
-n = 50 # Nbr of points
+n = 20 # Nbr of points
 Deltax = 1 / (n -1)
 heigth1 = 1
 base1 = 1
